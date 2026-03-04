@@ -45,16 +45,16 @@ modules:
       - npm ci --offline --no-audit --no-fund
       - export PATH="$PWD/node_modules/.bin:$PATH" && npm run build
       - export PATH="$PWD/node_modules/.bin:$PATH" && npm run tauri build -- --no-bundle
-      - install -Dm755 src-tauri/target/release/qbz-nix /app/bin/qbz
+      - install -Dm755 src-tauri/target/release/qbz /app/bin/qbz
       - install -Dm644 flatpak/com.blitzfc.qbz.desktop /app/share/applications/com.blitzfc.qbz.desktop
-      - install -Dm644 flatpak/com.blitzfc.qbz.metainfo.xml /app/share/metainfo/com.blitzfc.qbz.metainfo.xml
+      - install -Dm644 com.blitzfc.qbz.metainfo.xml /app/share/metainfo/com.blitzfc.qbz.metainfo.xml
       - install -Dm644 src-tauri/icons/128x128.png /app/share/icons/hicolor/128x128/apps/com.blitzfc.qbz.png
       - install -Dm644 src-tauri/icons/32x32.png /app/share/icons/hicolor/32x32/apps/com.blitzfc.qbz.png
     sources:
       - type: git
         url: https://github.com/vicrodh/qbz.git
-        tag: v1.1.13
-        commit: 008dfbcbb0dad0fe716fa51c3f7e956c182368fc
+        tag: v1.1.18
+        commit: 6d2128e90a50f2d4db46cf1169d51d93b50fd897
         x-checker-data:
           type: git
           tag-pattern: '^v(\d+\.\d+\.\d+)$'
@@ -62,5 +62,7 @@ modules:
         path: cargo/config
         dest: cargo
         dest-filename: config
+      - type: file
+        path: com.blitzfc.qbz.metainfo.xml
       - cargo-sources.json
       - npm-sources.json
