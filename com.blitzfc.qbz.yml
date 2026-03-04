@@ -46,8 +46,8 @@ modules:
       - export PATH="$PWD/node_modules/.bin:$PATH" && npm run build
       - export PATH="$PWD/node_modules/.bin:$PATH" && npm run tauri build -- --no-bundle
       - install -Dm755 src-tauri/target/release/qbz /app/bin/qbz
-      - install -Dm644 flatpak/com.blitzfc.qbz.desktop /app/share/applications/com.blitzfc.qbz.desktop
-      - install -Dm644 com.blitzfc.qbz.metainfo.xml /app/share/metainfo/com.blitzfc.qbz.metainfo.xml
+      - install -Dm644 flatpak/com.blitzfc.qbz.desktop -t /app/share/applications/
+      - install -Dm644 flatpak/com.blitzfc.qbz.metainfo.xml -t /app/share/metainfo/
       - install -Dm644 src-tauri/icons/128x128.png /app/share/icons/hicolor/128x128/apps/com.blitzfc.qbz.png
       - install -Dm644 src-tauri/icons/32x32.png /app/share/icons/hicolor/32x32/apps/com.blitzfc.qbz.png
     sources:
@@ -62,7 +62,5 @@ modules:
         path: cargo/config
         dest: cargo
         dest-filename: config
-      - type: file
-        path: com.blitzfc.qbz.metainfo.xml
       - cargo-sources.json
       - npm-sources.json
