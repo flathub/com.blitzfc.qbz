@@ -2,7 +2,7 @@
 <component type="desktop-application">
   <id>com.blitzfc.qbz</id>
   <name>QBZ</name>
-  <summary>Stream hi-res music from Qobuz</summary>
+  <summary>Stream hi-res music from Qobuz with bit-perfect playback</summary>
   <description>
     <p>
       QBZ is a native Qobuz client for Linux focused on reliable hi-res playback and desktop integration.
