@@ -44,7 +44,7 @@
   <provides>
     <binary>qbz</binary>
   </provides>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   <screenshots>
     <screenshot type="default">
       <caption xml:lang="en">Home and discovery view</caption>
@@ -60,6 +60,9 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.1.19" date="2026-03-10">
+      <description></description>
+    </release>
     <release version="1.1.18" date="2026-02-26">
       <description>
         <p>Miniplayer window with compact and micro surfaces. OAuth browser login for new Qobuz auth flow. Window size persistence, HiDPI scaling fix, and artist image context menus.</p>
