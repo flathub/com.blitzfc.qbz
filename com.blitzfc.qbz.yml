@@ -37,11 +37,11 @@ modules:
         npm_config_nodedir: /usr/lib/sdk/node20
         XDG_CACHE_HOME: /run/build/qbz/flatpak-node/cache
         npm_config_cache: /run/build/qbz/flatpak-node/npm-cache
-        npm_config_offline: "true"
-        npm_config_audit: "false"
-        npm_config_fund: "false"
+        npm_config_offline: 'true'
+        npm_config_audit: 'false'
+        npm_config_fund: 'false'
         CARGO_HOME: /run/build/qbz/cargo
-        CARGO_NET_OFFLINE: "true"
+        CARGO_NET_OFFLINE: 'true'
     build-commands:
       - install -Dm0644 cargo/config .cargo/config.toml
       - npm ci --offline --no-audit --no-fund
@@ -56,10 +56,10 @@ modules:
       - type: git
         url: https://github.com/vicrodh/qbz.git
         tag: v1.1.19
-        commit: 26f6d3d9be511475db16b61e5e84a64e0903edbf
+        commit: 2b75c7816b8e5cbcfe28b84af7842ca3c84c5beb
         x-checker-data:
           type: git
-          tag-pattern: '^v(\d+\.\d+\.\d+)$'
+          tag-pattern: ^v(\d+\.\d+\.\d+)$
       - type: file
         path: cargo/config
         dest: cargo
