@@ -5,6 +5,7 @@ sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node20
   - org.freedesktop.Sdk.Extension.rust-stable
+  - org.freedesktop.Sdk.Extension.llvm18
 command: qbz
 finish-args:
   - --share=ipc
@@ -30,8 +31,9 @@ modules:
   - name: qbz
     buildsystem: simple
     build-options:
-      append-path: /usr/lib/sdk/node20/bin:/usr/lib/sdk/rust-stable/bin
+      append-path: /usr/lib/sdk/node20/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm18/bin
       env:
+        LIBCLANG_PATH: /usr/lib/sdk/llvm18/lib
         npm_config_nodedir: /usr/lib/sdk/node20
         XDG_CACHE_HOME: /run/build/qbz/flatpak-node/cache
         npm_config_cache: /run/build/qbz/flatpak-node/npm-cache
