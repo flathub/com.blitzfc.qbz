@@ -53,6 +53,11 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.1.20" date="2026-03-11">
+      <description>
+        <p>Fix startup crash on Debian sid and Fedora (missing libjpeg). Fix partial cover art in AppImage. Fix track number display for compilations and box sets. Fix PipeWire bit-perfect stream match rule in Hi-Fi Wizard. Security update for quinn-proto. Test fixes for cross-distro builds.</p>
+      </description>
+    </release>
     <release version="1.1.19" date="2026-03-09">
       <description>
         <p>Scene Discovery: explore artists from the same city or musical scene. Redesigned Home with 3 Discovery Tabs (Home, Editor's Picks, For You) with personalized radio stations, spotlight artist, and genre filtering. Neon visualizers (Laser, Tunnel, Comet) with album art color extraction. In-app PDF booklet viewer. Audio engine upgrade to rodio 0.22 with ALSA gapless playback. Security hardening and stability fixes.</p>
