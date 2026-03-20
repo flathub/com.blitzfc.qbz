@@ -53,6 +53,11 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.0" date="2026-03-19">
+      <description>
+        <p>Qobuz Connect: multi-device playback with renderer and controller mode, server-authoritative queue sync, and bidirectional transport controls. Linebed 3D terrain visualizer with 4096-point FFT. Qobuz playlist follow/unfollow with native API sync. Audio settings sync overhaul fixing exclusive mode with QConnect. Volume lock for ALSA Direct hw:. HiFi Wizard real DAC sample rate detection. MuPDF 0.6 restoring booklet viewer. Offline mode button on network error screen. KWin SSD hack removed. PipeWire rate switch verification with retry. Help tooltips on bit-perfect settings. 185 commits.</p>
+      </description>
+    </release>
     <release version="1.1.20" date="2026-03-11">
       <description>
         <p>Fix startup crash on Debian sid and Fedora (missing libjpeg). Fix partial cover art in AppImage. Fix track number display for compilations and box sets. Fix PipeWire bit-perfect stream match rule in Hi-Fi Wizard. Security update for quinn-proto. Test fixes for cross-distro builds.</p>
