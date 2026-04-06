@@ -53,6 +53,22 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.3" date="2026-04-06">
+      <description>
+        <p>Qobuz has been migrating their audio delivery infrastructure to encrypted segmented streaming. This was silently breaking playback for certain tracks. This release implements the new streaming pipeline end-to-end, making QBZ compatible with Qobuz's current and future audio delivery.</p>
+        <ul>
+          <li>New CMAF streaming pipeline: encrypted segments fetched from Akamai CDN, decrypted on the fly, playback starts in under 1 second</li>
+          <li>Smart quality negotiation: requests the track's actual quality instead of always maximum, eliminating unnecessary API fallback cascades</li>
+          <li>ALSA progressive backoff on device busy: faster track skipping without "device busy" errors</li>
+          <li>Offline playback controls now work without internet connection (#173)</li>
+          <li>OAuth tokens stored in system keyring (GNOME Keyring, KDE Wallet) when available (#215)</li>
+          <li>Ghost track skip prevention: stale auto-advance commands discarded after context switch</li>
+          <li>Logout now stops active playback</li>
+          <li>Vite 8.0.5 security update (3 dev server vulnerabilities)</li>
+          <li>60+ components translated across all 5 locales</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.2" date="2026-04-04">
       <description>
         <p>About a month and a half ago, Qobuz began making changes to their authentication system. This was the reason we introduced OAuth login early on — and fortunately, doing so ahead of time meant no one was truly locked out of the app. This release simply removes direct credential login, making OAuth the sole authentication method. There is also some bugfixing for issues reported on GitHub.</p>
