@@ -59,8 +59,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/vicrodh/qbz.git
-        tag: v1.2.3
-        commit: 1c8ae9726f075cfc78db1d547ac0c286af22c50a
+        tag: v1.2.4
+        commit: 96d9079a3b04bf7285054affd60af46008aa2bb3
         x-checker-data:
           type: git
           tag-pattern: '^v(\d+\.\d+\.\d+)$'
