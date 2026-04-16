@@ -46,7 +46,10 @@ modules:
       - install -Dm0644 cargo/config .cargo/config.toml
       - npm ci --offline --no-audit --no-fund
       - export PATH="$PWD/node_modules/.bin:$PATH" && npm run build
-      - export PATH="$PWD/node_modules/.bin:$PATH" && npm run tauri build -- --no-bundle
+      # Flathub policy: no competing auto-updaters. Disable the `updater`
+      # Cargo feature so tauri-plugin-updater / tauri-plugin-process are
+      # not linked into the Flatpak binary.
+      - export PATH="$PWD/node_modules/.bin:$PATH" && npm run tauri build -- --no-bundle -- --no-default-features
       - install -Dm755 src-tauri/target/release/qbz /app/bin/qbz
       - install -Dm644 flatpak/com.blitzfc.qbz.desktop /app/share/applications/com.blitzfc.qbz.desktop
       - install -Dm644 com.blitzfc.qbz.metainfo.xml /app/share/metainfo/com.blitzfc.qbz.metainfo.xml
@@ -55,7 +58,7 @@ modules:
       - install -Dm644 src-tauri/icons/64x64.png /app/share/icons/hicolor/64x64/apps/com.blitzfc.qbz.png
       - install -Dm644 src-tauri/icons/48x48.png /app/share/icons/hicolor/48x48/apps/com.blitzfc.qbz.png
       - install -Dm644 src-tauri/icons/32x32.png /app/share/icons/hicolor/32x32/apps/com.blitzfc.qbz.png
-      - install -Dm644 src-tauri/icons/icon.png /app/share/icons/hicolor/512x512/apps/com.blitzfc.qbz.png
+      - install -Dm644 src-tauri/icons/512x512.png /app/share/icons/hicolor/512x512/apps/com.blitzfc.qbz.png
     sources:
       - type: git
         url: https://github.com/vicrodh/qbz.git
