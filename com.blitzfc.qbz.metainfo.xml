@@ -69,6 +69,19 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.6" date="2026-04-15">
+      <description>
+        <p>Accessibility, polish, and a couple of regression fixes.</p>
+        <ul>
+          <li>Four new WCAG-compliant themes: WCAG Light, WCAG Dark, High Contrast (pure white on pure black with yellow accent — 21:1 contrast for severely vision-impaired users), and Colorblind (deuteranopia-safe palette)</li>
+          <li>Horizontal album rows on Home, For You, Award and Label views now support mouse drag scrolling — click and drag sideways like on iPad or in a browser</li>
+          <li>Qobuz Connect badge in the player bar is now always visible, even when the queue is empty — connect to a remote renderer without having to start playing something first (#318)</li>
+          <li>Restore Infinite Play: the "∞" toggle in the queue panel now correctly persists across restarts and refills the queue with related tracks (Qobuz /radio/artist) when the queue ends, instead of stopping (#319)</li>
+          <li>App icon: bigger inside the canvas (matches Steam/Chrome/Papirus footprint), with a subtle blue rim and inner highlight so the matte-vinyl disc doesn't disappear on dark backgrounds; new 512x512 PNG export added</li>
+          <li>Gentoo: qbz-bin ebuild now correctly inherits xdg-utils so the hicolor icon cache and the desktop database are refreshed on install/uninstall (was the cause of stale icons after upgrade)</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.5" date="2026-04-15">
       <description>
         <p>"Accolade Watch" — a polish release focused on desktop integration, visual identity and small quality-of-life fixes.</p>
