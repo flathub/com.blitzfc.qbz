@@ -46,7 +46,10 @@ modules:
       - install -Dm0644 cargo/config .cargo/config.toml
       - npm ci --offline --no-audit --no-fund
       - export PATH="$PWD/node_modules/.bin:$PATH" && npm run build
-      - export PATH="$PWD/node_modules/.bin:$PATH" && npm run tauri build -- --no-bundle
+      # Flathub policy: no competing auto-updaters. Disable the `updater`
+      # Cargo feature so tauri-plugin-updater / tauri-plugin-process are
+      # not linked into the Flatpak binary.
+      - export PATH="$PWD/node_modules/.bin:$PATH" && npm run tauri build -- --no-bundle -- --no-default-features
       - install -Dm755 src-tauri/target/release/qbz /app/bin/qbz
       - install -Dm644 flatpak/com.blitzfc.qbz.desktop /app/share/applications/com.blitzfc.qbz.desktop
       - install -Dm644 com.blitzfc.qbz.metainfo.xml /app/share/metainfo/com.blitzfc.qbz.metainfo.xml
@@ -59,8 +62,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/vicrodh/qbz.git
-        tag: v1.2.4
-        commit: 96d9079a3b04bf7285054affd60af46008aa2bb3
+        tag: v1.2.5
+        commit: 2ee4222578a9c9ebbf978c156c5f19455b3e3fc7
         x-checker-data:
           type: git
           tag-pattern: '^v(\d+\.\d+\.\d+)$'
