@@ -37,7 +37,7 @@
   <provides>
     <binary>qbz</binary>
   </provides>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   <screenshots>
     <screenshot type="default">
       <caption xml:lang="en">Home and discovery view</caption>
@@ -53,6 +53,9 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.5" date="2026-04-16">
+      <description></description>
+    </release>
     <release version="1.2.4" date="2026-04-07">
       <description>
         <p>Quick-fix release: fixes tracks ending ~9 seconds early when streamed via CMAF, and improves credential security with encrypted keyring storage and XDG portal secret integration.</p>
