@@ -24,6 +24,9 @@ finish-args:
   # Tray icon
   - --talk-name=org.kde.StatusNotifierWatcher
 
+  # Discord
+  - --filesystem=xdg-run/app/com.discordapp.Discord:create
+
 modules:
   # Tray icon support
   - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
@@ -51,7 +54,9 @@ modules:
       # not linked into the Flatpak binary.
       - export PATH="$PWD/node_modules/.bin:$PATH" && npm run tauri build -- --no-bundle -- --no-default-features
       - install -Dm755 src-tauri/target/release/qbz /app/bin/qbz
+      - install -D -t ${FLATPAK_DEST}/bin/ qbz-wrapper
       - install -Dm644 flatpak/com.blitzfc.qbz.desktop /app/share/applications/com.blitzfc.qbz.desktop
+      - desktop-file-edit --set-key=Exec --set-value='/app/bin/qbz-wrapper' /app/share/applications/com.blitzfc.qbz.desktop
       - install -Dm644 com.blitzfc.qbz.metainfo.xml /app/share/metainfo/com.blitzfc.qbz.metainfo.xml
       - install -Dm644 src-tauri/icons/128x128.png /app/share/icons/hicolor/128x128/apps/com.blitzfc.qbz.png
       - install -Dm644 src-tauri/icons/256x256.png /app/share/icons/hicolor/256x256/apps/com.blitzfc.qbz.png
@@ -75,3 +80,12 @@ modules:
         path: com.blitzfc.qbz.metainfo.xml
       - cargo-sources.json
       - npm-sources.json
+      - type: script
+        commands:
+          - |
+            for i in {0..9}; do
+              test -S $XDG_RUNTIME_DIR/discord-ipc-$i ||
+                ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-$i;
+            done
+            qbz "$@"
+        dest-filename: qbz-wrapper
