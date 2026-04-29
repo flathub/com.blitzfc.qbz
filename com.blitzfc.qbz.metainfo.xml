@@ -37,7 +37,7 @@
   <provides>
     <binary>qbz</binary>
   </provides>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   <screenshots>
     <screenshot type="default">
       <caption xml:lang="en">Home and discovery view</caption>
@@ -69,6 +69,9 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.10" date="2026-04-29">
+      <description></description>
+    </release>
     <release version="1.2.8" date="2026-04-21">
       <description>
         <p>Mixtapes &amp; Collections: two new first-class container types for curating your listening, independent from Qobuz's own playlists.</p>
