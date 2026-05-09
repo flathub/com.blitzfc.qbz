@@ -69,6 +69,26 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.11" date="2026-05-09">
+      <description>
+        <p>Exclusive Hardening: bit-perfect playback gets reinforced on both ends — macOS gains a real CoreAudio Exclusive Mode (community PR by @Vudgekek) and Linux now reserves the DAC via the standard ReserveDevice1 D-Bus protocol while ALSA Direct is engaged.</p>
+        <ul>
+          <li>macOS Exclusive Mode: bit-perfect playback on Apple hardware (PR #391); CoreAudio device-rate check, exclusive stream recreation, and hardware volume alignment</li>
+          <li>Linux DAC reservation: per-process zbus client acquires org.freedesktop.ReserveDevice1 for the lifetime of an ALSA Direct stream, with a Settings toggle</li>
+          <li>Discord Rich Presence (#336): opt-in track display with a sandbox-aware Flatpak socket bridge — symlinks discord-ipc-{0..9} only after the user enables the toggle</li>
+          <li>Sleep Timer (#402): pause-on-end with a smart-positioned popover, custom values from 1 minute upward</li>
+          <li>Offline Cache Manager: dedicated view replacing the old Settings shortcut, with per-album expand, alpha-index artist rail, live progress rings, and a configurable cache cap (5 GB default)</li>
+          <li>Local Library: new folder-tree mode with two-column layout, recursive multi-select, drag-resizable sidebar, search with path-parents preserved, and network-folder filter</li>
+          <li>Local Library: ephemeral folder playback that doesn't write to the library DB, with CUE support, format whitelist, and gapless prefetch</li>
+          <li>Local Library: metadata-grouped Albums tab (with Plex inclusion) and per-user tab order modal</li>
+          <li>macOS title bar integration (@afonsojramos): qbz custom titlebar mounts on macOS with traffic-light reservation, plus nav/search/hide toggles in Settings</li>
+          <li>Title bar mode selector replaces the hide/system toggles with a system/plasma/stripped dropdown</li>
+          <li>QConnect startup persistence: startup_mode and last_known_state on disk, plus --enable-qconnect / --disable-qconnect CLI flags</li>
+          <li>Album and artist detail polish: palette-derived gradient backdrops, featured artist line, parental warning, click-to-expand description, tracklist toolbar</li>
+          <li>Bug fixes: Plex per-track artwork preserved during scan; macOS output device picker populated; uniform 250ms playback poll cadence; QConnect honors peer-controller seeks; playlist multi-select aligned with TrackRow</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.10" date="2026-04-29">
       <description>
         <p>Fix an issue with gapless play introduced by a new feature in 1.2.9.</p>

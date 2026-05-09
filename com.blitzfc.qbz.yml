@@ -3,7 +3,7 @@ runtime: org.gnome.Platform
 runtime-version: '49'
 sdk: org.gnome.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.node20
+  - org.freedesktop.Sdk.Extension.node24
   - org.freedesktop.Sdk.Extension.rust-stable
   - org.freedesktop.Sdk.Extension.llvm20
 command: qbz
@@ -21,6 +21,18 @@ finish-args:
   # User music library
   - --filesystem=xdg-music
 
+  # Discord IPC socket for Rich Presence (#336). Static path covers
+  # native Discord (deb / rpm / AUR); the :create permission on the
+  # Discord-Flatpak app dir lets us read sockets created by Discord
+  # installed via Flathub and lay down `discord-ipc-{0..9}` symlinks
+  # pointing at it. The `discord-rich-presence` crate only knows the
+  # static path; the symlinks are what bridge the two sandboxes. The
+  # symlink work happens lazily, only after the user opts in via the
+  # Settings toggle, so users who never enable Discord RPC never touch
+  # this dir.
+  - --filesystem=xdg-run/discord-ipc-0
+  - --filesystem=xdg-run/app/com.discordapp.Discord:create
+
   # Tray icon
   - --talk-name=org.kde.StatusNotifierWatcher
 
@@ -31,10 +43,10 @@ modules:
   - name: qbz
     buildsystem: simple
     build-options:
-      append-path: /usr/lib/sdk/node20/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
+      append-path: /usr/lib/sdk/node24/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
       env:
         LIBCLANG_PATH: /usr/lib/sdk/llvm20/lib
-        npm_config_nodedir: /usr/lib/sdk/node20
+        npm_config_nodedir: /usr/lib/sdk/node24
         XDG_CACHE_HOME: /run/build/qbz/flatpak-node/cache
         npm_config_cache: /run/build/qbz/flatpak-node/npm-cache
         npm_config_offline: "true"
@@ -62,8 +74,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/vicrodh/qbz.git
-        tag: v1.2.10
-        commit: ffa7287baa76d63cb0fcc440b1f15134682a0f88
+        tag: v1.2.11
+        commit: cc98b7f7e68ef1ed3fc3ac0d7557b2a0fe52de97
         x-checker-data:
           type: git
           tag-pattern: '^v(\d+\.\d+\.\d+)$'
