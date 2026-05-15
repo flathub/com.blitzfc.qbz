@@ -21,28 +21,12 @@ finish-args:
   # User music library
   - --filesystem=xdg-music
 
-  # Discord IPC socket for opt-in Rich Presence (#336).
-  # Static path covers Discord installed natively. The :create on the
-  # Discord-Flatpak app dir lets us read its socket and lay down our own
-  # discord-ipc-{0..9} symlinks pointing at it; the discord-rich-presence
-  # crate only knows the static path. Symlinks are created on demand by
-  # discord_rpc.rs::prepare_flatpak_discord_socket_links, only after the
-  # user enables the Rich Presence toggle in settings.
+  # Discord IPC sockets for opt-in Rich Presence (#336).
   - --filesystem=xdg-run/discord-ipc-0
   - --filesystem=xdg-run/app/com.discordapp.Discord:create
 
-  # Tray icon visibility under Flatpak sandbox
-  - --filesystem=xdg-run/tray-icon:create
+  # Tray icon
   - --talk-name=org.kde.StatusNotifierWatcher
-
-  # Desktop notifications (track changes, errors)
-  - --talk-name=org.freedesktop.Notifications
-
-  # System keyring for Qobuz credential storage
-  - --talk-name=org.freedesktop.secrets
-
-  # MPRIS media controls (own-name auto-granted: name contains appid)
-  - --talk-name=org.mpris.MediaPlayer2.*
 
 modules:
   # Tray icon support
