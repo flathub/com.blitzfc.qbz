@@ -69,6 +69,19 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.13" date="2026-05-16">
+      <description>
+        <p>400+ stars: a polish and stability release led by macOS fixes, with the usual round of bug fixes and groundwork under the hood.</p>
+        <ul>
+          <li>macOS Shared Mode: playback no longer drifts in speed, CoreAudio retries on a sample-rate mismatch, and rate-mismatch errors are rephrased for end users (PRs by @Vudgekek and @afonsojramos)</li>
+          <li>macOS title bar and window drag regions reworked; lyrics active-line color corrected on WebKit; auto-updater bundle naming fixed</li>
+          <li>Session restore now brings back the full queue, not just the current track</li>
+          <li>New Linux graphics auto-config: detects the GPU and recommends safe rendering settings</li>
+          <li>Favorite and add-to-playlist buttons are no longer wrongly disabled on Qobuz tracks</li>
+          <li>Assorted bug fixes, dropdown and menu behavior cleanup, and dependency bumps</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.12" date="2026-05-09">
       <description>
         <p>Hotfix: rolls back the broken titlebar-mode-selector that left v1.2.11 with no visible window chrome on Linux. Restores v1.2.10 title bar behavior (System / Custom / Hidden). All other v1.2.11 features remain.</p>
