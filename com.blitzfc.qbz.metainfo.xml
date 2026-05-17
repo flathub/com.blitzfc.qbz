@@ -37,7 +37,7 @@
   <provides>
     <binary>qbz</binary>
   </provides>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   <screenshots>
     <screenshot type="default">
       <caption xml:lang="en">Home and discovery view</caption>
@@ -69,6 +69,9 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.13" date="2026-05-17">
+      <description></description>
+    </release>
     <release version="1.2.12" date="2026-05-09">
       <description>
         <p>Hotfix: rolls back the broken titlebar-mode-selector that left v1.2.11 with no visible window chrome on Linux. Restores v1.2.10 title bar behavior (System / Custom / Hidden). All other v1.2.11 features remain.</p>
