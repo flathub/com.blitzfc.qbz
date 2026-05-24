@@ -1861,14 +1861,14 @@
     {
         "type": "archive",
         "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/discord-rich-presence/discord-rich-presence-0.2.5.crate",
-        "sha256": "a75db747ecd252c01bfecaf709b07fcb4c634adf0edb5fed47bc9c3052e7076b",
-        "dest": "cargo/vendor/discord-rich-presence-0.2.5"
+        "url": "https://static.crates.io/crates/discord-rich-presence/discord-rich-presence-1.1.0.crate",
+        "sha256": "90c55d69cab17c19677ce3a5f8face993a9e6eaf847fecac3547f3a3ff4a2494",
+        "dest": "cargo/vendor/discord-rich-presence-1.1.0"
     },
     {
         "type": "inline",
-        "contents": "{\"package\": \"a75db747ecd252c01bfecaf709b07fcb4c634adf0edb5fed47bc9c3052e7076b\", \"files\": {}}",
-        "dest": "cargo/vendor/discord-rich-presence-0.2.5",
+        "contents": "{\"package\": \"90c55d69cab17c19677ce3a5f8face993a9e6eaf847fecac3547f3a3ff4a2494\", \"files\": {}}",
+        "dest": "cargo/vendor/discord-rich-presence-1.1.0",
         "dest-filename": ".cargo-checksum.json"
     },
     {
@@ -8902,19 +8902,6 @@
         "type": "inline",
         "contents": "{\"package\": \"ebe5ef63511595f1344e2d5cfa636d973292adc0eec1f0ad45fae9f0851ab1d4\", \"files\": {}}",
         "dest": "cargo/vendor/tower-0.5.3",
-        "dest-filename": ".cargo-checksum.json"
-    },
-    {
-        "type": "archive",
-        "archive-type": "tar-gzip",
-        "url": "https://static.crates.io/crates/tower-http/tower-http-0.5.2.crate",
-        "sha256": "1e9cd434a998747dd2c4276bc96ee2e0c7a2eadf3cae88e52be55a05fa9053f5",
-        "dest": "cargo/vendor/tower-http-0.5.2"
-    },
-    {
-        "type": "inline",
-        "contents": "{\"package\": \"1e9cd434a998747dd2c4276bc96ee2e0c7a2eadf3cae88e52be55a05fa9053f5\", \"files\": {}}",
-        "dest": "cargo/vendor/tower-http-0.5.2",
         "dest-filename": ".cargo-checksum.json"
     },
     {
