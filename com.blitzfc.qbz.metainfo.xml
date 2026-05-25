@@ -37,7 +37,7 @@
   <provides>
     <binary>qbz</binary>
   </provides>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   <screenshots>
     <screenshot type="default">
       <caption xml:lang="en">Home and discovery view</caption>
@@ -69,6 +69,9 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.14" date="2026-05-25">
+      <description></description>
+    </release>
     <release version="1.2.13" date="2026-05-16">
       <description>
         <p>400+ stars: a polish and stability release led by macOS fixes, with the usual round of bug fixes and groundwork under the hood.</p>
