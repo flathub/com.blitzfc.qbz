@@ -13,7 +13,13 @@ finish-args:
   - --socket=wayland
   - --socket=fallback-x11
   - --socket=pulseaudio
-  - --device=dri
+
+  # Direct sound-device access (/dev/snd) for bit-perfect / exclusive
+  # ALSA output, matching native installs. Flatpak has no granular
+  # --device=snd; /dev/snd is only exposed via --device=all (same as
+  # Strawberry, mpv, and other bit-perfect audio apps). --device=all
+  # includes --device=dri (GPU), so the separate dri entry is dropped.
+  - --device=all
 
   # Native PipeWire access
   - --filesystem=xdg-run/pipewire-0:ro
