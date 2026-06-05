@@ -69,6 +69,15 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.2.15" date="2026-06-05">
+      <description>
+        <p>A small maintenance release while a major update is in the works: two bug fixes, no new features.</p>
+        <ul>
+          <li>Startup no longer freezes on a blank screen when Qobuz is slow to serve its web bundle; the download is bounded by a timeout and retried, and the connection tokens are cached so later launches go straight to the app</li>
+          <li>Fixed a "Too many open files" crash on image-heavy views like Discover: image and artwork downloads now reuse a single shared connection instead of opening a new one per image</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.14" date="2026-05-25">
       <description>
         <p>Just cleaning: a maintenance release — audio that works out of the box, a smarter backend picker, and a round of fixes and dependency updates.</p>
