@@ -37,7 +37,7 @@
   <provides>
     <binary>qbz</binary>
   </provides>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   <screenshots>
     <screenshot type="default">
       <caption xml:lang="en">Home and discovery view</caption>
@@ -69,6 +69,9 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.0.0" date="2026-07-04">
+      <description></description>
+    </release>
     <release version="1.2.15" date="2026-06-05">
       <description>
         <p>A small maintenance release while a major update is in the works: two bug fixes, no new features.</p>
