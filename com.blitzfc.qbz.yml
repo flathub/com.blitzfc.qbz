@@ -1,10 +1,20 @@
+# Flathub manifest — OFFLINE build of the Slint app (crates/ workspace).
+#
+# DRAFT prepared 2026-07-02 for the QBZ v2.0 (Tauri -> Slint) release.
+# Before the PR: run ~/Personal/qbz/scripts/update-flathub.sh v2.x.x to
+# point tag/commit at the release and regenerate cargo-sources.json from
+# crates/Cargo.lock. npm-sources.json is gone (no more node build), as is
+# the libayatana-appindicator module chain (Slint tray = ksni, pure Rust).
+#
+# Keep in sync with the network twin: qbz repo packaging/flatpak/com.blitzfc.qbz.yml
+
 app-id: com.blitzfc.qbz
 runtime: org.gnome.Platform
 runtime-version: '49'
 sdk: org.gnome.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.node20
   - org.freedesktop.Sdk.Extension.rust-stable
+  # bindgen (aws-lc-sys et al.) needs libclang.
   - org.freedesktop.Sdk.Extension.llvm20
 command: qbz
 finish-args:
@@ -31,49 +41,45 @@ finish-args:
   - --filesystem=xdg-run/discord-ipc-0
   - --filesystem=xdg-run/app/com.discordapp.Discord:create
 
-  # Tray icon
+  # Tray icon (ksni StatusNotifierItem)
   - --talk-name=org.kde.StatusNotifierWatcher
 
-modules:
-  # Tray icon support
-  - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
+  # System keyring (GNOME Keyring, KDE Wallet) — OAuth token storage.
+  - --talk-name=org.freedesktop.secrets
 
+modules:
   - name: qbz
     buildsystem: simple
     build-options:
-      append-path: /usr/lib/sdk/node20/bin:/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
+      append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin
       env:
         LIBCLANG_PATH: /usr/lib/sdk/llvm20/lib
-        npm_config_nodedir: /usr/lib/sdk/node20
-        XDG_CACHE_HOME: /run/build/qbz/flatpak-node/cache
-        npm_config_cache: /run/build/qbz/flatpak-node/npm-cache
-        npm_config_offline: "true"
-        npm_config_audit: "false"
-        npm_config_fund: "false"
         CARGO_HOME: /run/build/qbz/cargo
-        CARGO_NET_OFFLINE: "true"
+        CARGO_NET_OFFLINE: 'true'
+        # Memory tier for 16 GB builders: the qbz_ui rustc is the ~30 GB
+        # peak; single job + high codegen-units + opt 2 is the measured
+        # MIN-footprint combination. Symbols stripped by [profile.release].
+        CARGO_INCREMENTAL: '0'
+        CARGO_BUILD_JOBS: '1'
+        CARGO_PROFILE_RELEASE_CODEGEN_UNITS: '256'
+        CARGO_PROFILE_RELEASE_OPT_LEVEL: '2'
     build-commands:
       - install -Dm0644 cargo/config .cargo/config.toml
-      - npm ci --offline --no-audit --no-fund
-      - export PATH="$PWD/node_modules/.bin:$PATH" && npm run build
-      # Flathub policy: no competing auto-updaters. Disable the `updater`
-      # Cargo feature so tauri-plugin-updater / tauri-plugin-process are
-      # not linked into the Flatpak binary.
-      - export PATH="$PWD/node_modules/.bin:$PATH" && npm run tauri build -- --no-bundle -- --no-default-features
-      - install -Dm755 src-tauri/target/release/qbz /app/bin/qbz
-      - install -Dm644 flatpak/com.blitzfc.qbz.desktop /app/share/applications/com.blitzfc.qbz.desktop
+      - cargo --offline build --release --manifest-path crates/Cargo.toml -p qbz
+      - install -Dm755 crates/target/release/qbz /app/bin/qbz
+      - install -Dm644 packaging/flatpak/com.blitzfc.qbz.desktop /app/share/applications/com.blitzfc.qbz.desktop
       - install -Dm644 com.blitzfc.qbz.metainfo.xml /app/share/metainfo/com.blitzfc.qbz.metainfo.xml
-      - install -Dm644 src-tauri/icons/128x128.png /app/share/icons/hicolor/128x128/apps/com.blitzfc.qbz.png
-      - install -Dm644 src-tauri/icons/256x256.png /app/share/icons/hicolor/256x256/apps/com.blitzfc.qbz.png
-      - install -Dm644 src-tauri/icons/64x64.png /app/share/icons/hicolor/64x64/apps/com.blitzfc.qbz.png
-      - install -Dm644 src-tauri/icons/48x48.png /app/share/icons/hicolor/48x48/apps/com.blitzfc.qbz.png
-      - install -Dm644 src-tauri/icons/32x32.png /app/share/icons/hicolor/32x32/apps/com.blitzfc.qbz.png
-      - install -Dm644 src-tauri/icons/512x512.png /app/share/icons/hicolor/512x512/apps/com.blitzfc.qbz.png
+      - install -Dm644 packaging/icons/32x32.png /app/share/icons/hicolor/32x32/apps/com.blitzfc.qbz.png
+      - install -Dm644 packaging/icons/48x48.png /app/share/icons/hicolor/48x48/apps/com.blitzfc.qbz.png
+      - install -Dm644 packaging/icons/64x64.png /app/share/icons/hicolor/64x64/apps/com.blitzfc.qbz.png
+      - install -Dm644 packaging/icons/128x128.png /app/share/icons/hicolor/128x128/apps/com.blitzfc.qbz.png
+      - install -Dm644 packaging/icons/256x256.png /app/share/icons/hicolor/256x256/apps/com.blitzfc.qbz.png
+      - install -Dm644 packaging/icons/512x512.png /app/share/icons/hicolor/512x512/apps/com.blitzfc.qbz.png
     sources:
       - type: git
         url: https://github.com/vicrodh/qbz.git
-        tag: v1.2.15
-        commit: 5b551561f74429757959e482f717e58c130b7090
+        tag: v2.0.0
+        commit: 2caede7dd145d2a900aab49c37e331f74dd74b19
         x-checker-data:
           type: git
           tag-pattern: '^v(\d+\.\d+\.\d+)$'
@@ -84,4 +90,3 @@ modules:
       - type: file
         path: com.blitzfc.qbz.metainfo.xml
       - cargo-sources.json
-      - npm-sources.json
