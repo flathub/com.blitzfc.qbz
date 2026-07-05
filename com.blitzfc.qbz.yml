@@ -14,7 +14,7 @@ app-id: com.blitzfc.qbz
 # for users, and the org.gnome.Platform//49 install was failing on the
 # x86_64 builders anyway.
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: qbz
 finish-args:
