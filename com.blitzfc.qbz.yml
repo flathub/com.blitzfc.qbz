@@ -67,7 +67,7 @@ modules:
       - type: archive
         only-arches: [x86_64]
         url: https://github.com/vicrodh/qbz/releases/download/v2.0.0/qbz_2.0.0_amd64.tar.gz
-        sha256: 4036ec020ff4591c239a4ed419a6695944ca7632ec11ffe10d65a594b88cfbad
+        sha256: 155a635ef69b299d5b96cb71b71a325432c90234f3537a042981e7f269b9182e
         dest: qbz-dist
         x-checker-data:
           type: json
