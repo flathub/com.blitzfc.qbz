@@ -65,7 +65,12 @@ modules:
         CARGO_PROFILE_RELEASE_OPT_LEVEL: '2'
     build-commands:
       - install -Dm0644 cargo/config .cargo/config.toml
-      - cargo --offline build --release --manifest-path crates/Cargo.toml -p qbz
+      # qbz-ui (the single giant Slint-generated module) is the memory peak:
+      # the first 2.0.0 test build got SIGKILLed compiling it on the aarch64
+      # builder. Drop THAT package to opt-level 1 (UI glue only — the audio,
+      # DSP and render crates keep the profile's opt-level 2).
+      - cargo --offline build --release --config 'profile.release.package.qbz-ui.opt-level=1'
+        --manifest-path crates/Cargo.toml -p qbz
       - install -Dm755 crates/target/release/qbz /app/bin/qbz
       - install -Dm644 packaging/flatpak/com.blitzfc.qbz.desktop /app/share/applications/com.blitzfc.qbz.desktop
       - install -Dm644 com.blitzfc.qbz.metainfo.xml /app/share/metainfo/com.blitzfc.qbz.metainfo.xml
