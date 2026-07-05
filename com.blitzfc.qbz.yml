@@ -9,9 +9,13 @@
 # Keep in sync with the network twin: qbz repo packaging/flatpak/com.blitzfc.qbz.yml
 
 app-id: com.blitzfc.qbz
-runtime: org.gnome.Platform
-runtime-version: '49'
-sdk: org.gnome.Sdk
+# freedesktop, not GNOME: a binary repack needs only the base platform
+# (alsa/fontconfig/GL/dbus — the app is Slint/winit, no GTK), it is lighter
+# for users, and the org.gnome.Platform//49 install was failing on the
+# x86_64 builders anyway.
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
 command: qbz
 finish-args:
   - --share=ipc
