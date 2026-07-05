@@ -44,9 +44,6 @@ finish-args:
   # Tray icon (ksni StatusNotifierItem)
   - --talk-name=org.kde.StatusNotifierWatcher
 
-  # System keyring (GNOME Keyring, KDE Wallet) — OAuth token storage.
-  - --talk-name=org.freedesktop.secrets
-
 modules:
   # OFFICIAL UPSTREAM BINARIES (same publisher as the GitHub releases): the
   # Slint UI compiles as one ~1.6M-line generated Rust module whose single
