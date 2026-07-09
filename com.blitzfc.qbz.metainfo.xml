@@ -37,7 +37,7 @@
   <provides>
     <binary>qbz</binary>
   </provides>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   <screenshots>
     <screenshot type="default">
       <caption xml:lang="en">Home and discovery view</caption>
@@ -69,6 +69,9 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.0.1" date="2026-07-09">
+      <description></description>
+    </release>
     <release version="2.0.0" date="2026-07-03">
       <description>
         <p>QBZ 2.0 "Rebuild": the frontend is completely rebuilt as a native application — considerably smaller CPU and memory footprint, first-class macOS support, and a friendlier, more minimalist layout.</p>
