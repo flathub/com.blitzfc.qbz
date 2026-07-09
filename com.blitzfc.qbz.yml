@@ -63,24 +63,26 @@ modules:
     sources:
       - type: archive
         only-arches: [x86_64]
-        url: https://github.com/vicrodh/qbz/releases/download/v2.0.0/qbz_2.0.0_amd64.tar.gz
-        sha256: 155a635ef69b299d5b96cb71b71a325432c90234f3537a042981e7f269b9182e
+        url: https://github.com/vicrodh/qbz/releases/download/v2.0.1/qbz_2.0.1_amd64.tar.gz
+        sha256: 4c2ead084ff24fd43f5a9d8de35ea5a546eb87fa30fb62a4ecfbc588e1911099
         dest: qbz-dist
         x-checker-data:
           type: json
           url: https://api.github.com/repos/vicrodh/qbz/releases/latest
           version-query: .tag_name | sub("^v"; "")
-          url-query: '"https://github.com/vicrodh/qbz/releases/download/v" + $version + "/qbz_" + $version + "_amd64.tar.gz"'
+          url-query: '"https://github.com/vicrodh/qbz/releases/download/v" + $version
+            + "/qbz_" + $version + "_amd64.tar.gz"'
       - type: archive
         only-arches: [aarch64]
-        url: https://github.com/vicrodh/qbz/releases/download/v2.0.0/qbz_2.0.0_aarch64.tar.gz
-        sha256: 9ddd35ddb8b1c0d4600f327c03807e43ab091e8be8683502f57399d27b9713c9
+        url: https://github.com/vicrodh/qbz/releases/download/v2.0.1/qbz_2.0.1_aarch64.tar.gz
+        sha256: 60dbd92265e7b073b92033b85770c355d9ae00f93eb2c79d47a5d90331faaf34
         dest: qbz-dist
         x-checker-data:
           type: json
           url: https://api.github.com/repos/vicrodh/qbz/releases/latest
           version-query: .tag_name | sub("^v"; "")
-          url-query: '"https://github.com/vicrodh/qbz/releases/download/v" + $version + "/qbz_" + $version + "_aarch64.tar.gz"'
+          url-query: '"https://github.com/vicrodh/qbz/releases/download/v" + $version
+            + "/qbz_" + $version + "_aarch64.tar.gz"'
       - type: file
         path: com.blitzfc.qbz.desktop
       - type: file
