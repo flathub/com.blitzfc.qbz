@@ -69,6 +69,21 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.1.1" date="2026-09-11">
+      <description>
+        <p>First maintenance release for the 2.1 line: smoother, faster scrolling in heavily populated sections, resizable side panels, and a broad round of bug fixes.</p>
+        <ul>
+          <li>Scrolling: much better scroll response and performance in heavily populated sections</li>
+          <li>Resizable playlist sidebar and queue/lyrics column, with a collapsible My QBZ sidebar</li>
+          <li>Artist pages: MusicBrainz identity verified by exact name and track ISRCs, never another band's data</li>
+          <li>GNOME: Copy link works under Wayland and in the Flatpak sandbox, and the dock shows the QBZ icon</li>
+          <li>Playlists: Remove from playlist works again on every source, and Navidrome/Jellyfin/Plex tracks show their cover art</li>
+          <li>Mixtapes and Collections: a song opens its album, correct row menu and columns, and the account import no longer creates broken entries</li>
+          <li>Playback and casting: recover from a wedged output stream, macOS Exclusive mode restored, and DLNA renderers stop vanishing</li>
+          <li>MusicBrainz artist data survives 503 and transport failures via retries behind a shared limiter</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.1.0" date="2026-09-06">
       <description>
         <p>QBZ 2.1.0 brings the Qt frontend to its first minor release: QConnect grows official LAN pairing parity, casting gets a second hardening round, and playlists, hotkeys and the audio stack all move forward.</p>

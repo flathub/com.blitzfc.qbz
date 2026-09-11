@@ -14,7 +14,7 @@ app-id: com.blitzfc.qbz
 # for users, and the org.gnome.Platform//49 install was failing on the
 # x86_64 builders anyway.
 runtime: org.kde.Platform
-runtime-version: '6.9'
+runtime-version: '6.11'
 sdk: org.kde.Sdk
 command: qbz
 finish-args:
@@ -63,8 +63,8 @@ modules:
     sources:
       - type: archive
         only-arches: [x86_64]
-        url: https://github.com/vicrodh/qbz/releases/download/v2.1.0/qbz_2.1.0_amd64.tar.gz
-        sha256: 3992592693c36575a7df186022f80fa0656771c7293571f39a92ada529fd223b
+        url: https://github.com/vicrodh/qbz/releases/download/v2.1.1/qbz_2.1.1_amd64.tar.gz
+        sha256: 03cfde1d54d395e4a53c6807056d909fd0966fde5c9607f9b627c45f0298bcb8
         dest: qbz-dist
         x-checker-data:
           type: json
@@ -73,8 +73,8 @@ modules:
           url-query: '"https://github.com/vicrodh/qbz/releases/download/v" + $version + "/qbz_" + $version + "_amd64.tar.gz"'
       - type: archive
         only-arches: [aarch64]
-        url: https://github.com/vicrodh/qbz/releases/download/v2.1.0/qbz_2.1.0_aarch64.tar.gz
-        sha256: 35a89e5213d298e3b87cc968498570246eaf6cbe48ccfa39fb5d9775372aa85f
+        url: https://github.com/vicrodh/qbz/releases/download/v2.1.1/qbz_2.1.1_aarch64.tar.gz
+        sha256: 2db0bd28f40ea99dac0d636812b4222be8e512be5c365b207f542eddca45538c
         dest: qbz-dist
         x-checker-data:
           type: json
