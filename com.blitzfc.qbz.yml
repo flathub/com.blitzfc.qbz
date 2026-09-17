@@ -63,8 +63,8 @@ modules:
     sources:
       - type: archive
         only-arches: [x86_64]
-        url: https://github.com/vicrodh/qbz/releases/download/v2.1.1/qbz_2.1.1_amd64.tar.gz
-        sha256: 03cfde1d54d395e4a53c6807056d909fd0966fde5c9607f9b627c45f0298bcb8
+        url: https://github.com/vicrodh/qbz/releases/download/v2.1.2/qbz_2.1.2_amd64.tar.gz
+        sha256: 72f6e304ce20f90df4d06b125c510b68151d2cdf9e8f543777176945984e84df
         dest: qbz-dist
         x-checker-data:
           type: json
@@ -73,8 +73,8 @@ modules:
           url-query: '"https://github.com/vicrodh/qbz/releases/download/v" + $version + "/qbz_" + $version + "_amd64.tar.gz"'
       - type: archive
         only-arches: [aarch64]
-        url: https://github.com/vicrodh/qbz/releases/download/v2.1.1/qbz_2.1.1_aarch64.tar.gz
-        sha256: 2db0bd28f40ea99dac0d636812b4222be8e512be5c365b207f542eddca45538c
+        url: https://github.com/vicrodh/qbz/releases/download/v2.1.2/qbz_2.1.2_aarch64.tar.gz
+        sha256: 0cd603fcb6f0ebc0af979ae1b539abedbceb12ac11e8b33444fe9c5da44fe540
         dest: qbz-dist
         x-checker-data:
           type: json
